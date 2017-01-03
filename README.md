@@ -15,6 +15,14 @@ https://github.com/wishmouse/timer
 - JavaScript
 - moments.js
 
+#Dev Tools
+
+npm install
+
+To run server side :  nodemon
+
+To run client side : npm run watch
+
 
 
 
