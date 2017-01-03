@@ -1,0 +1,103 @@
+<html>
+<head>
+  <title>Egg Timer</title>
+  <link rel='stylesheet' type='text/css' href='../stylesheets/normalize.css'></link>
+  <link rel='stylesheet' type='text/css' href='../stylesheets/skeleton.css'></link>
+  <link rel='stylesheet' type='text/css' href='../stylesheets/style.css'></link>
+    <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+  <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+  <script src="/bundle.js"></script>
+  <script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+</head>
+<body>
+  <div class="container">
+     <div class='row'>
+       <div class="four columns">
+         <p>Todays date<p>
+          <div class="facts" id='todays-date'></div>
+        </div>
+
+      <div class="four columns" hidden>
+        <p>Current time<p>
+          <div class="facts" id='todays-time'></div>
+      </div>
+      <div class="four columns">
+        <p>GTM time<p>
+          <div class="facts" id='todays-time-gtm'></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+     <div class='row'>
+       <div class="four columns">
+         <p>MCT<p>
+          <div class="times" id='mct-time'></div>
+        </div>
+
+      <div class="four columns">
+        <p>ECT<p>
+          <div class="times" id='ect-time'></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class='row'>
+        <div class="six columns">
+          <p>Timer</p>
+           <div id="timeToGo">
+            <ul>
+              <li id="hours"></li>
+              <li id="minutes"></li>
+              <li id="seconds"></li>
+            </ul>
+          </div>
+          <div id="timeToGoLabels">
+            <ul>
+              <li>Hours</li>
+              <li>Min</li>
+              <li>Seconds</li>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class='row'>
+          <div class="twelve columns">
+            <p>MCT Input</p>
+            <div>
+                <input type="text" id="mct-input" placeholder="Time" class="times" style="width:500">
+            </div>
+          </div>
+      </div>
+    </div>
+<script>
+var timepicker = new TimePicker('mct-input', {
+  lang: 'en',
+  theme: 'dark'
+});
+timepicker.on('change', function(evt) {
+
+  var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+  evt.element.value = value;
+
+});
+</script>
+    <!--
+          <div class="six columns">
+            <div class='causes' hidden>
+              top causes of death in <strong>{{user.gender}}'s</strong>:<br>
+              <i>
+                {{#each stats}}
+                * {{causeOfDeath}} <br>
+                {{/each}}
+              </i>
+              <br>
+            </div hidden>
+          </div>
+        </div>
+      -->
+          <script src='../javascripts/countDown.js'></script>
+        </body>
+        </html>

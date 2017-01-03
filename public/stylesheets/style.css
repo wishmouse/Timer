@@ -1,0 +1,113 @@
+body {
+  padding: 50px;
+  background-color: #593650;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  color: #F0DDD3;
+  text-decoration: none;
+  font-family: 'Righteous', cursive;
+}
+
+
+.causes{
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-bottom: 10px;
+  background-color: #F0DDD3;
+  border-radius: 45px;
+  border:3px solid #8C8079;
+  color:#593650;
+  font-size: 20px;
+}
+
+}
+.signIn{
+  background-image: url('/stylesheets/banner.jpg')
+}
+
+
+#toIndex{
+  text-decoration: none;
+  border-radius: 20px;
+  background-color: #A66583;
+}
+
+#birthdaySumbit{
+  background-color: #A66583;
+}
+
+#birthday{
+ border-radius: 10px;
+ border-color: #D9C8BF;
+ height: 50px;
+ width: 250px;
+}
+
+.facts{
+  width: 150px;
+  border-radius: 10px;
+  background-color: #D9C8BF;
+  color: #593650;
+  text-align: center;
+  padding: 13px;
+  font-size: 20px;
+}
+
+.times{
+  width: 150px;
+  border-radius: 10px;
+  background-color: #bfd9c8;
+  color: #593650;
+  text-align: center;
+  padding: 13px;
+  font-size: 20px;
+}
+
+
+
+#timeToGo ul {
+  list-style: none outside none;
+}
+
+#timeToGo li {
+  background: #F0DDD3;
+  border-radius: 10px;
+  color: #593650;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 40px;
+  font-weight: bold;
+  height: 60px;
+  width: 70px;
+  padding-top: 10px;
+  position: relative;
+  top: -15px;
+  left: -15px;
+}
+#timeToGoLabels ul {
+  list-style: none outside none;
+}
+
+#timeToGoLabels li {
+  color: #F0DDD3;
+  display: inline-block;
+  font-size:15px;
+  font-weight: lighter;
+  height: 20px;
+  width: 70px;
+  padding-top: 0px;
+  position: relative;
+  top: -40px;
+  left: -20px;
+  text-align: center;
+}
+
+p {
+  color: #F0DDD3;
+  font-size: 20px;
+}
+
+https://color.adobe.com/Tema-Color-18-color-theme-8034445/
