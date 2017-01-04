@@ -1,31 +1,28 @@
-Learning Objectives
-Personal project No.2
+##UCT & ECT Times
 
 
 #Repo
 
-https://github.com/wishmouse/times_up
+https://github.com/wishmouse/timer
 
 #Technologies
 
-- OAuth
 - Postgres
 - bootstrap
 - HBS
 - CSS
 - jQuery
+- JavaScript
 - moments.js
 
+#Dev Tools
 
-#What milestones and timeline:
-- OAuth with Facebook
-- Database filtering and table joins with Postgres
-- Countdown timer from birthday
-- Save image url to the database and return a image
+npm install
 
-Stretch:
-- Use API for Cause of Death
-- Use Cloudinary to save images.
+To run server side :  nodemon
+
+To run client side : npm run watch
+
 
 
 
