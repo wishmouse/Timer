@@ -17,11 +17,9 @@ function listen(){
     e.preventDefault()
           var time = $('#mct-input').val()
           var epoch = new Date(time).valueOf()
-          console.log("epoch", epoch)
-          var longDate = new Date(epoch)
-          console.log("human readable date", longDate)
-          var momentUct = moment.utc(epoch).format()
-          console.log("moment UCT", momentUct)
+          //var longDate = new Date(epoch)
+          var momentUct = moment.utc(epoch).format("HH:mm")
+          $('#mct-time').html(momentUct)
         });
 
     dateMatch()
