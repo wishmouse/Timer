@@ -4,12 +4,14 @@
   <link rel='stylesheet' type='text/css' href='../stylesheets/normalize.css'></link>
   <link rel='stylesheet' type='text/css' href='../stylesheets/skeleton.css'></link>
   <link rel='stylesheet' type='text/css' href='../stylesheets/style.css'></link>
-    <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+  <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
   <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
   <script src="/bundle.js"></script>
   <script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
 </head>
 <body>
+  <div id="narwhals"></div>
+
   <div class="container">
      <div class='row'>
        <div class="four columns">
@@ -51,7 +53,7 @@
   </div>
   <div class="container">
     <div class='row'>
-        <div class="six columns">
+        <div class="six columns" style="height: 20%">
           <p>Timer</p>
            <div id="timeToGo">
             <ul>
@@ -71,45 +73,42 @@
     </div>
     <div class="container">
       <div class='row'>
+        <div id="timer-message" class="three columns"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class='row'>
           <div class="twelve columns">
             <p>MCT Input</p>
             <div>
-                <!--<input type="text" id="mct-input" placeholder="Time" class="times" style="width:300">-->
                 <input type="datetime-local" id="mct-input" class="times" style="width:300">
             </div>
             <input type="submit" id="time-submit">
           </div>
       </div>
     </div>
-    <!--
-<script>
-var timepicker = new TimePicker('mct-input', {
-  lang: 'en',
-  theme: 'dark'
-});
-timepicker.on('change', function(evt) {
+    <script>
+var soundThirty = document.createElement('audio')
+soundThirty.id = 'audio'
+//soundThirty.controls = 'controls'
+soundThirty.src = '../audio/RickRoll.mp3'
 
-  var value = (evt.hour || '00') + ':' + (evt.minute || '00');
-  evt.element.value = value;
+var soundFifteen = document.createElement('audio')
+soundFifteen.id = 'audio'
+//soundFifteen.controls = 'controls'
+soundFifteen.src = '../audio/Proclaimers.mp3'
 
-});
-</script>
--->
+var soundFive = document.createElement('audio')
+soundFive.id = 'audio'
+//soundFive.controls = 'controls'
+soundFive.src = '../audio/Narwhals.mp3'
 
+var soundEnd  = document.createElement('audio')
+soundEnd.id = 'audio'
+//soundEnd.controls = 'controls'
+soundEnd.src = '../audio/ImperialMarch.mp3'
 
-    <!--
-          <div class="six columns">
-            <div class='causes' hidden>
-              top causes of death in <strong>{{user.gender}}'s</strong>:<br>
-              <i>
-                {{#each stats}}
-                * {{causeOfDeath}} <br>
-                {{/each}}
-              </i>
-              <br>
-            </div hidden>
-          </div>
-        </div>
-      -->
+    </script>
+
         </body>
         </html>

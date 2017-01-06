@@ -39,7 +39,6 @@ function listen(){
           console.log("this is difference", difference)
 
           countdownTimer()
-
         });
 }
 
@@ -59,22 +58,58 @@ function countdownTimer(){
 
 
 function alertNotifiction(){
-  if (intervalHours == 0 && intervalMinutes == 30){
-     alert("30 minutes to go.. tick tock")
-  } else if(intervalHours == 0 && intervalMinutes == 15){
-      alert("15 minutes to go.. tick tock")
-  } else if (intervalHours == 0 && intervalMinutes == 5) {
-      alert("5 minutes to go.. tick tock")
-  } else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds == 0)
-        alert("times up")
-        clearInterval(intervalID)
+  if (intervalHours == 0 && intervalMinutes == 30 && intervalSeconds < 59 && intervalSeconds > 50) {
+     thirtyMinutes()
+    document.body.appendChild(soundThirty).play()
+  } else if (intervalHours == 0 && intervalMinutes == 30 && intervalSeconds == 44){
+      $( "audio" ).remove( "#audio" )
+  } else if(intervalHours == 0 && intervalMinutes == 15 && intervalSeconds < 59 && intervalSeconds > 45) {
+     fifteenMinutes()
+      document.body.appendChild(soundFifteen).play()
+  } else if (intervalHours == 0 && intervalMinutes == 15 && intervalSeconds == 44) {
+      $( "audio" ).remove( "#audio" )
+  } else if (intervalHours == 0 && intervalMinutes == 5  && intervalSeconds < 59 && intervalSeconds > 45) {
+     fiveMinutes()
+     document.body.appendChild(soundFive).play()
+  } else if (intervalHours == 0 && intervalMinutes == 5 && intervalSeconds == 44 ) {
+      $( "audio" ).remove( "#audio" )
+  } else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds < 59 && intervalSeconds > 45) {
+    zeroMinutes()
+    document.body.appendChild(soundEnd).play()
+  }  else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds == 44) {
+      $( "audio" ).remove( "#audio" )
+  } else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds < 10 && intervalSeconds > 1) {
+  console.log("do nothing")
+  }
 }
 
 
-/*function countdownTimer(){
-    var countdownTimer = dateHelpers.countdownTimer(gtmTime)
+$('div.section:empty').hide();
+
+  function thirtyMinutes(){
+    document.getElementById("timer-message").innerHTML = "30 minutes ....";
+    $('#timer-message').fadeOut(500).fadeIn(500);
+    setTimeout ( 'document.getElementById("timer-message").innerHTML = ""', 500 );
   }
-  */
+
+  function fifteenMinutes()  {
+    document.getElementById("timer-message").innerHTML = "15 minutes ....";
+    $('#timer-message').fadeOut(500).fadeIn(500);
+    setTimeout ( 'document.getElementById("timer-message").innerHTML = ""', 500 );
+  }
+
+  function fiveMinutes()  {
+     document.getElementById("timer-message").innerHTML = "5 minutes ....";
+     $('#timer-message').fadeOut(500).fadeIn(500);
+     setTimeout ( 'document.getElementById("timer-message").innerHTML = ""', 500 );
+  }
+
+  function zeroMinutes(){
+    document.getElementById("timer-message").innerHTML = "times up ....";
+     $('#timer-message').fadeOut(500).fadeIn(500);
+     setTimeout ( 'document.getElementById("timer-message").innerHTML = ""', 500 )
+   }
+
 
 
 module.exports = {

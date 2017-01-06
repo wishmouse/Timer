@@ -28,10 +28,14 @@ h1, h2, h3 {
 }
 
 
-#toIndex{
-  text-decoration: none;
-  border-radius: 20px;
-  background-color: #A66583;
+#timer-message{
+  font-size: 5em;
+  color: white;
+  border: 5px #F0DDD3 solid;
+  border-radius: 30px;
+  width: 500px;
+  text-align: center;
+  margin: 30px;"
 }
 
 #birthdaySumbit{
