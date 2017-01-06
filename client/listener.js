@@ -1,3 +1,4 @@
+
 var $ = require('jquery')
 //var controller = require('./controller')
 var dateHelpers = require('./dateHelpers')
@@ -6,31 +7,40 @@ var moment = require('moment');
 var todaysDate = dateHelpers.today()
 var todaysTime = dateHelpers.currentTime()
 var gtmTime = dateHelpers.timeGtm()
-
+console.log("this is gtmTime", gtmTime)
+var time = ""
+var epoch = ""
+var momentUct = ""
+var momentUctLong = ""
+var difference = ""
 
 function listen(){
+
+  var gtmTimeShort = moment(gtmTime).tz('Europe/London').format("HH:mm:ss")
+  console.log("this is gtmTimeShort", gtmTimeShort)
+  var gtmDateShort = moment(gtmTime).tz('Europe/London').format("D MMM")
+  console.log("this is gtmDateShort", gtmDateShort)
+
     $("#todays-date").append(todaysDate)
     $("#todays-time").append(todaysTime)
-    $("#todays-time-gtm").append(gtmTime)
+    $("#todays-time-gtm").append(gtmTimeShort)
+    $("#todays-date-gtm").append(gtmDateShort)
 
     $('#time-submit').click(function(e){
     e.preventDefault()
-          var time = $('#mct-input').val()
-          var epoch = new Date(time).valueOf()
-          //var longDate = new Date(epoch)
-          var momentUct = moment.utc(epoch).format("HH:mm")
+          time = $('#mct-input').val()
+          epoch = new Date(time).valueOf()
+          momentUct = moment.utc(epoch).format("HH:mm:ss")
+          momentUctLong = moment.utc(epoch).format()
+          console.log("this is momentUctLong", momentUctLong)
           $('#mct-time').html(momentUct)
+
+          difference = moment.utc(moment(momentUctLong,"DD-MM-YYYY HH:mm:ss").diff(moment(gtmTime,"DD-MM-YYYY HH:mm:ss"))).format("HH:mm:ss")
+          console.log("this is difference", difference)
+
+          countdownTimer()
+
         });
-
-    dateMatch()
-    countdownTimer()
-}
-
-function dateMatch(){
-  if (todaysDate == '4 Jan'){
-    $('#mct-time').html('03:00')
-    $('#ect-time').html('23:00')
-  }
 }
 
 function countdownTimer(){
@@ -38,7 +48,8 @@ function countdownTimer(){
   }
 
 
-
 module.exports = {
   listen:listen,
+  momentUctLong:momentUctLong,
+  gtmTime:gtmTime,
 }
