@@ -73,20 +73,28 @@
     </div>
     <div class="container">
       <div class='row'>
-        <div id="timer-message" class="three columns"></div>
+        <div id="timer-message" class="twelve columns"></div>
       </div>
     </div>
-    <div class="container">
+    <div class="container" id="time-input">
       <div class='row'>
-          <div class="twelve columns">
+          <div class="four columns">
             <p>MCT Input</p>
             <div>
                 <input type="datetime-local" id="mct-input" class="times" style="width:300">
             </div>
             <input type="submit" id="time-submit">
           </div>
+          <div class="four columns">
+            <p>ECT Input</p>
+            <div>
+                <input type="datetime-local" id="ect-input" class="times" style="width:300">
+            </div>
+            <input type="submit" id="time-submit-ect">
+          </div>
       </div>
     </div>
+
     <script>
 var soundThirty = document.createElement('audio')
 soundThirty.id = 'audio'
