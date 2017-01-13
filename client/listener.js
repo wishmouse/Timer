@@ -25,7 +25,6 @@ var ectTimeShort = ""
 var ectDateShort = ""
 
 function listen(){
-
     $('#time-submit').click(function(e){
     e.preventDefault()
           gtmTimeEpoch = new Date(gtmTime).valueOf()
@@ -54,6 +53,7 @@ function listen(){
 
 }
 
+console.log("this is result on listener.js", result)
 
 var intervalMct = setInterval(countdownTimerMct, 1000)
 var intervalEct = setInterval(countdownTimerEct, 1000)
