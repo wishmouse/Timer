@@ -2,11 +2,10 @@ var momentCountdown = require('moment-countdown')
 var moment = require('moment');
 var momentZone = require('moment-timezone')
 var $ = require('jquery')
-var listen = require('./listener')
-
+//var listen = require('./listener')
+var listen = require('./index')
 
 moment() .format();
-
 
 function currentDate(){
   console.log("this is today")
@@ -77,6 +76,6 @@ module.exports = {
   currentDate:currentDate,
   currentTime:currentTime,
   timeGtm:timeGtm,
-  dateGtm:dateGtm, 
+  dateGtm:dateGtm,
   countdownTimer:countdownTimer
 }

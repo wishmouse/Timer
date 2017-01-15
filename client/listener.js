@@ -1,5 +1,6 @@
-
+/*
 var $ = require('jquery')
+var request = require('superagent')
 //var controller = require('./controller')
 var dateHelpers = require('./dateHelpers')
 var moment = require('moment');
@@ -24,7 +25,9 @@ var mctTimeShort = ""
 var ectTimeShort = ""
 var ectDateShort = ""
 
+
 function listen(){
+
     $('#time-submit').click(function(e){
     e.preventDefault()
           gtmTimeEpoch = new Date(gtmTime).valueOf()
@@ -33,9 +36,15 @@ function listen(){
           mctTimeShort = moment.utc(epoch).format("HH:mm")
           mctDateShort = moment.utc(epoch).format("D MMM")
           $('#mct-time').html(mctTimeShort)
-
+          request
+              .post('/')
+              .send({date: mctTimeShort})
+              .end(function(err, response){
+                console.log("this is query", response)
           countdownTimerMct()
         });
+      })
+
 
       $('#time-submit-ect').click(function(e){
       e.preventDefault()
@@ -53,7 +62,7 @@ function listen(){
 
 }
 
-console.log("this is result on listener.js", result)
+
 
 var intervalMct = setInterval(countdownTimerMct, 1000)
 var intervalEct = setInterval(countdownTimerEct, 1000)
@@ -167,3 +176,4 @@ module.exports = {
   momentUctLong:momentUctLong,
   gtmTime:gtmTime,
 }
+*/

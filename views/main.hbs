@@ -1,0 +1,122 @@
+<html>
+<head>
+  <title>Methuselah</title>
+  <link rel='stylesheet' type='text/css' href='../stylesheets/normalize.css'></link>
+  <link rel='stylesheet' type='text/css' href='../stylesheets/skeleton.css'></link>
+  <link rel='stylesheet' type='text/css' href='../stylesheets/style.css'></link>
+  <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+  <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+  <script src="/bundle.js"></script>
+  <script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+</head>
+<body>
+
+<p>This is result[0].date: == <i>{{date}}</i> ==</p>
+  <div class="container">
+     <div class='row'>
+       <div class="four columns">
+         <p>Todays date<p>
+          <div class="facts" id='todays-date'></div>
+        </div>
+
+      <div class="four columns">
+        <p>Current time<p>
+          <div class="facts" id='todays-time'></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class='row'>
+      <div class="four columns">
+        <p>UTC date<p>
+          <div class="facts" id='todays-date-gtm'></div>
+      </div>
+      <div class="four columns">
+        <p>UTC time<p>
+          <div class="facts" id='todays-time-gtm'></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+     <div class='row'>
+       <div class="four columns">
+         <p>MCT<p>
+          <div class="times" id='mct-time'></div>
+        </div>
+
+      <div class="four columns">
+        <p>ECT<p>
+          <div class="times" id='ect-time'></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class='row'>
+        <div class="six columns" style="height: 20%">
+          <p>Timer</p>
+           <div id="timeToGo">
+            <ul>
+              <li id="hours"></li>
+              <li id="minutes"></li>
+              <li id="seconds"></li>
+            </ul>
+          </div>
+          <div id="timeToGoLabels">
+            <ul>
+              <li>Hours</li>
+              <li>Min</li>
+              <li>Seconds</li>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class='row'>
+        <div id="timer-message" class="twelve columns"></div>
+      </div>
+    </div>
+    <div class="container" id="time-input">
+      <div class='row'>
+          <div class="four columns">
+            <p>MCT Input</p>
+            <div>
+                <input type="datetime-local" id="mct-input" class="times" style="width:300">
+            </div>
+            <input type="submit" id="time-submit">
+          </div>
+          <div class="four columns">
+            <p>ECT Input</p>
+            <div>
+                <input type="datetime-local" id="ect-input" class="times" style="width:300">
+            </div>
+            <input type="submit" id="time-submit-ect">
+          </div>
+      </div>
+    </div>
+
+    <script>
+var soundThirty = document.createElement('audio')
+soundThirty.id = 'audio'
+//soundThirty.controls = 'controls'
+soundThirty.src = '../audio/RickRoll.mp3'
+
+var soundFifteen = document.createElement('audio')
+soundFifteen.id = 'audio'
+//soundFifteen.controls = 'controls'
+soundFifteen.src = '../audio/Proclaimers.mp3'
+
+var soundFive = document.createElement('audio')
+soundFive.id = 'audio'
+//soundFive.controls = 'controls'
+soundFive.src = '../audio/Narwhals.mp3'
+
+var soundEnd  = document.createElement('audio')
+soundEnd.id = 'audio'
+//soundEnd.controls = 'controls'
+soundEnd.src = '../audio/ImperialMarch.mp3'
+
+    </script>
+
+        </body>
+        </html>
