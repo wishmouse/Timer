@@ -1,6 +1,3 @@
-//var $ = require('jquery')
-//var listeners = require('./listener')
-//var request = require('superagent')
 
 
 var $ = require('jquery')
@@ -10,6 +7,9 @@ var dateHelpers = require('./dateHelpers')
 var moment = require('moment');
 var momentCountdown = require('moment-countdown')
 var momentZone = require('moment-timezone')
+var search = require('../views/main.hbs')
+//var server = require('../app.js')
+
 
 var timeZone = ""
 var todaysDate = dateHelpers.currentDate()
@@ -28,13 +28,20 @@ var mctDateShort = ""
 var mctTimeShort = ""
 var ectTimeShort = ""
 var ectDateShort = ""
+var timeData
 
 $('document').ready(function() {
 
-console.log("this is response", response)
-
+    $.ajax({
+      url: "/api",
+      success: function(result){
+        timeData = JSON.parse(result)
+        console.log("this is TimeData", timeData)
+      }
+  })
 
 function listen(){
+
 
     $('#time-submit').click(function(e){
     e.preventDefault()
@@ -44,11 +51,12 @@ function listen(){
           mctTimeShort = moment.utc(epoch).format("HH:mm")
           mctDateShort = moment.utc(epoch).format("D MMM")
           $('#mct-time').html(mctTimeShort)
-          request
+          console.log("=====")
+          request  //method: string post
               .post('/')
-              .send({date: mctTimeShort})
+              .send({mct:mctTimeShort})
               .end(function(err, response){
-                console.log("this is query", response)
+              console.log("this is query", response)
           countdownTimerMct()
         });
       })
@@ -63,14 +71,18 @@ function listen(){
             console.log("this is ectTimeShort", ectTimeShort)
             ectDateShort = moment.utc(epoch).format("D MMM")
             $('#ect-time').html(ectTimeShort)
-
+            request
+                .post('/')
+                .send({ectTimeShort})
+                .end(function(err, response){
+                 console.log("this is query==", response)
             countdownTimerEct()
-
           });
+        });
 
 }
 
-
+listen()
 
 var intervalMct = setInterval(countdownTimerMct, 1000)
 var intervalEct = setInterval(countdownTimerEct, 1000)
@@ -180,14 +192,23 @@ $('div.section:empty').hide();
    }
 
 module.exports = {
-  listen:listen,
+  //listen:listen,
   momentUctLong:momentUctLong,
   gtmTime:gtmTime,
 }
 
 
+
+
+
 })
+
 /*
+var $ = require('jquery')
+var listeners = require('./listener')
+var request = require('superagent')
+
+
 $('document').ready(function() {
   listeners.listen()
 

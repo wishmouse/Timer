@@ -6,6 +6,7 @@ var dateHelpers = require('./dateHelpers')
 var moment = require('moment');
 var momentCountdown = require('moment-countdown')
 var momentZone = require('moment-timezone')
+var search = require('../views/main.hbs')
 
 var timeZone = ""
 var todaysDate = dateHelpers.currentDate()
@@ -38,7 +39,7 @@ function listen(){
           $('#mct-time').html(mctTimeShort)
           request
               .post('/')
-              .send({date: mctTimeShort})
+              .send({search: mctTimeShort})
               .end(function(err, response){
                 console.log("this is query", response)
           countdownTimerMct()
@@ -55,10 +56,15 @@ function listen(){
             console.log("this is ectTimeShort", ectTimeShort)
             ectDateShort = moment.utc(epoch).format("D MMM")
             $('#ect-time').html(ectTimeShort)
+            request
+                .post('/')
+                .send(ectDateShort)
+                .end(function(err, response){
+                 console.log("this is query", response)
 
             countdownTimerEct()
-
           });
+        });
 
 }
 
