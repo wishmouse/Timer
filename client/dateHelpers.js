@@ -4,11 +4,23 @@ var momentZone = require('moment-timezone')
 var $ = require('jquery')
 //var listen = require('./listener')
 var listen = require('./index')
+var gtmDateVal
+var timeData
+
+
+$.ajax({
+  url: "/api",
+  success: function(result){
+    timeData = JSON.parse(result)
+    console.log("this is timeData", timeData)
+    }
+})
+
 
 moment() .format();
 
 function currentDate(){
-  console.log("this is today")
+  console.log("this is dateHelper.js")
   setInterval(function(){
     var day = moment().format("DD")
     var month = moment().format("MMM")
@@ -51,31 +63,27 @@ function dateGtm(){
     var day = moment.utc().format("DD")
     var month = moment.utc().format("MMM")
     var second = moment.utc().format("ss")
-
-    $("#todays-date-gtm").text(day +" "+ month)
+    var gtmDateVal = day +" "+ month
+    $("#todays-date-gtm").text(gtmDateVal)
+    for (var j = 0; j < timeData.length; j++){
+        allData = timeData[j]
+        if(allData.date == gtmDateVal){
+          $("#mct-time").text(allData.mct)
+          //console.log("this is allData.mct ", allData.mct)
+          $("#ect-time").text(allData.ect)
+          //console.log("this is allData.ect ", allData.ect)
+        }
+      }
   }, 1000
   )
+
   return setInterval
 }
 
-function countdownTimer(){
-   setInterval(function(){
-     var hours = moment.utc(moment(uctTime,"DD-MM-YYYY HH:mm:ss").diff(moment(currentGtm,"DD-MM-YYYY HH:mm:ss"))).hours()
-     var minutes = moment.utc(moment(uctTime,"DD-MM-YYYY HH:mm:ss").diff(moment(currentGtm,"DD-MM-YYYY HH:mm:ss"))).minutes()
-     var seconds = moment.utc(moment(uctTime,"DD-MM-YYYY HH:mm:ss").diff(moment(currentGtm,"DD-MM-YYYY HH:mm:ss"))).seconds()
-
-     $('#hours').text(hours)
-     $('#minutes').text(minutes)
-     $('#seconds').text(seconds)
-   }, 1000
-   )
-   return setInterval
- }
 
 module.exports = {
   currentDate:currentDate,
   currentTime:currentTime,
   timeGtm:timeGtm,
-  dateGtm:dateGtm,
-  countdownTimer:countdownTimer
+  dateGtm:dateGtm
 }

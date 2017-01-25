@@ -1,5 +1,3 @@
-
-
 var $ = require('jquery')
 var request = require('superagent')
 //var controller = require('./controller')
@@ -28,21 +26,14 @@ var mctDateShort = ""
 var mctTimeShort = ""
 var ectTimeShort = ""
 var ectDateShort = ""
-var timeData
+
+
+
 
 $('document').ready(function() {
 
-    $.ajax({
-      url: "/api",
-      success: function(result){
-        timeData = JSON.parse(result)
-        console.log("this is TimeData", timeData)
-      }
-  })
 
 function listen(){
-
-
     $('#time-submit').click(function(e){
     e.preventDefault()
           gtmTimeEpoch = new Date(gtmTime).valueOf()
@@ -57,7 +48,7 @@ function listen(){
               .send({mct:mctTimeShort})
               .end(function(err, response){
               console.log("this is query", response)
-          countdownTimerMct()
+          //countdownTimerMct()
         });
       })
 
@@ -67,28 +58,43 @@ function listen(){
             gtmTimeEpoch = new Date(gtmTime).valueOf()
             ectTime = $('#ect-input').val()
             epoch = new Date(ectTime).valueOf()
+            console.log("this is epoch", epoch)
             ectTimeShort = moment.utc(epoch).format("HH:mm")
             console.log("this is ectTimeShort", ectTimeShort)
             ectDateShort = moment.utc(epoch).format("D MMM")
-            $('#ect-time').html(ectTimeShort)
+            console.log("this is ectDateShort", ectDateShort)
+            //$('#ect-time').html(ectTimeShort)
+
+            $.ajax({
+              method: "POST",
+              url: "/database",
+              data: { date: ectDateShort, ect: ectTimeShort, ecTEpoch: epoch }
+            })
+
+            /*
             request
                 .post('/')
                 .send({ectTimeShort})
                 .end(function(err, response){
                  console.log("this is query==", response)
             countdownTimerEct()
-          });
-        });
 
+          });
+          */
+        });
 }
 
 listen()
+countdownTimerMct()
+
 
 var intervalMct = setInterval(countdownTimerMct, 1000)
 var intervalEct = setInterval(countdownTimerEct, 1000)
 
 function countdownTimerMct(){
-    intervalHours =moment.duration(epoch - moment().tz('Europe/London')).hours()
+    allDataMct =  $('#mct-time').html()
+    //console.log("this is allDataMct", allDataMct)
+    intervalHours  =moment.duration(epoch - moment().tz('Europe/London')).hours()
     intervalMinutes = moment.duration(epoch - moment().tz('Europe/London')).minutes()
     intervalSeconds = moment.duration(epoch - moment().tz('Europe/London')).seconds()
     $('#hours').text(intervalHours)
@@ -100,6 +106,8 @@ function countdownTimerMct(){
 }
 
 function countdownTimerEct(){
+    allDataEct =  $('#ect-time').html()
+    //console.log("this is allDataEct", allDataEct)
     intervalHours =moment.duration(epoch - moment().tz('Europe/London')).hours()
     intervalMinutes = moment.duration(epoch - moment().tz('Europe/London')).minutes()
     intervalSeconds = moment.duration(epoch - moment().tz('Europe/London')).seconds()
