@@ -28,97 +28,99 @@ var ectTimeShort = ""
 var ectDateShort = ""
 
 
-
-
 $('document').ready(function() {
 
 
 function listen(){
-    $('#time-submit').click(function(e){
-    e.preventDefault()
-          gtmTimeEpoch = new Date(gtmTime).valueOf()
-          time = $('#mct-input').val()
-          epoch = new Date(time).valueOf()
-          mctTimeShort = moment.utc(epoch).format("HH:mm")
-          mctDateShort = moment.utc(epoch).format("D MMM")
-          $('#mct-time').html(mctTimeShort)
-          console.log("=====")
-          request  //method: string post
-              .post('/')
-              .send({mct:mctTimeShort})
-              .end(function(err, response){
-              console.log("this is query", response)
-          //countdownTimerMct()
-        });
-      })
 
-
-      $('#time-submit-ect').click(function(e){
+      $('#data-submit').click(function(e){
       e.preventDefault()
             gtmTimeEpoch = new Date(gtmTime).valueOf()
             ectTime = $('#ect-input').val()
+            mctTime = $('#mct-input').val()
             epoch = new Date(ectTime).valueOf()
-            console.log("this is epoch", epoch)
+            mctEpoch = new Date(mctTime).valueOf()
             ectTimeShort = moment.utc(epoch).format("HH:mm")
-            console.log("this is ectTimeShort", ectTimeShort)
+            mctTimeShort = moment.utc(mctEpoch).format("HH:mm")
             ectDateShort = moment.utc(epoch).format("D MMM")
-            console.log("this is ectDateShort", ectDateShort)
-            //$('#ect-time').html(ectTimeShort)
+            $('#data-form')[0].reset();
+
 
             $.ajax({
               method: "POST",
               url: "/database",
-              data: { date: ectDateShort, ect: ectTimeShort, ecTEpoch: epoch }
+              data: { date: ectDateShort,
+                      ect: ectTimeShort,
+                      ectEpoch: epoch,
+                      mct: mctTimeShort,
+                      mctEpoch: mctEpoch
+                     }
             })
-
-            /*
-            request
-                .post('/')
-                .send({ectTimeShort})
-                .end(function(err, response){
-                 console.log("this is query==", response)
-            countdownTimerEct()
-
-          });
-          */
-        });
-}
+        })
+      }
 
 listen()
-countdownTimerMct()
+
+var intervalHours  = 0
+var intervalMinutes = 0
+var intervalSeconds = 0
+$('#hours').html(0)
+$('#minutes').text(0)
+$('#seconds').text(0)
+
+var intervalMct = setInterval(countdownTimer, 1000)
+
+function timeType(){
+  var todayEpochVal = parseInt($("#todays-date-gtm-epoch").html())
+  var mctPage = parseInt($("#mct-epoch").text())
+  var ectPage = parseInt($("#ect-epoch").text())
 
 
-var intervalMct = setInterval(countdownTimerMct, 1000)
-var intervalEct = setInterval(countdownTimerEct, 1000)
-
-function countdownTimerMct(){
-    allDataMct =  $('#mct-time').html()
-    //console.log("this is allDataMct", allDataMct)
-    intervalHours  =moment.duration(epoch - moment().tz('Europe/London')).hours()
-    intervalMinutes = moment.duration(epoch - moment().tz('Europe/London')).minutes()
-    intervalSeconds = moment.duration(epoch - moment().tz('Europe/London')).seconds()
-    $('#hours').text(intervalHours)
-    $('#minutes').text(intervalMinutes)
-    $('#seconds').text(intervalSeconds)
-
-  alertNotifiction()
-  return setInterval
+    if(todayEpochVal < mctPage ){
+      timeZone = "MCT"
+    } else if (todayEpochVal < ectPage && mctPage < ectPage){
+      timeZone = "ECT"
+    }
 }
 
-function countdownTimerEct(){
-    allDataEct =  $('#ect-time').html()
-    //console.log("this is allDataEct", allDataEct)
-    intervalHours =moment.duration(epoch - moment().tz('Europe/London')).hours()
-    intervalMinutes = moment.duration(epoch - moment().tz('Europe/London')).minutes()
-    intervalSeconds = moment.duration(epoch - moment().tz('Europe/London')).seconds()
-    $('#hours').text(intervalHours)
-    $('#minutes').text(intervalMinutes)
-    $('#seconds').text(intervalSeconds)
+function countdownTimer(){
+  timeType()
+
+      mctEpoch = $("#mct-epoch").html()
+      ectEpoch = $("#ect-epoch").html()
+
+   if (timeZone == "MCT"){
+        intervalHours  =moment.duration(mctEpoch - moment().tz('Europe/London')).hours()
+        intervalMinutes = moment.duration(mctEpoch - moment().tz('Europe/London')).minutes()
+        intervalSeconds = moment.duration(mctEpoch - moment().tz('Europe/London')).seconds()
+        hours = $('#hours').text(intervalHours)
+        minutes = $('#minutes').text(intervalMinutes)
+        seconds = $('#seconds').text(intervalSeconds)
+
+    } else if (timeZone == "ECT" && intervalHours == 0  && intervalMinutes == 0 && intervalSeconds < 0){
+      console.log("hellooooo bizcuit")
+      hours = $('#hours').text(0)
+      minutes = $('#minutes').text(0)
+      seconds = $('#seconds').text(0)
+      intervalHours  = 0
+      intervalMinutes = 0
+      intervalSeconds = 0
+
+      clearInterval(intervalMct)
+
+   } else if (timeZone == "ECT"){
+        intervalHours  = moment.duration(ectEpoch - moment().tz('Europe/London')).hours()
+        intervalMinutes = moment.duration(ectEpoch - moment().tz('Europe/London')).minutes()
+        intervalSeconds = moment.duration(ectEpoch - moment().tz('Europe/London')).seconds()
+        hours = $('#hours').text(intervalHours)
+        minutes = $('#minutes').text(intervalMinutes)
+        seconds = $('#seconds').text(intervalSeconds)
+      }
 
   alertNotifiction()
+
   return setInterval
 }
-
 
 function alertNotifiction(){
   if (intervalHours == 0 && intervalMinutes == 30 && intervalSeconds < 59 && intervalSeconds > 50) {
@@ -150,12 +152,7 @@ function alertNotifiction(){
   }  else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds == 44) {
       $("audio" ).remove( "#audio" )
       $("#time-input").show()
-  } else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds == 0 && timeZone == "MCT" ) {
-         countdownTimerEct()
-  } else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds == 0 && timeZone == "ECT") {
-        countdownTimerMct()
   }
-
 }
 
 
@@ -186,21 +183,9 @@ $('div.section:empty').hide();
      setTimeout ( 'document.getElementById("timer-message").innerHTML = ""', 500 )
    }
 
-   function timeType(){
 
-       var todaysDateGtm = $("#todays-date-gtm").text()
-       var todaysTimeGtm = $("#todays-time-gtm").text()
-
-
-       if(todaysDateGtm == mctDateShort && todaysTimeGtm < mctTimeShort ){
-         timeZone = "MCT"
-       } else if (todaysDateGtm == ectDateShort && todaysTimeGtm < ectTimeShort && mctTimeShort < ectTimeShort){
-         timeZone = "ECT"
-       }
-   }
 
 module.exports = {
-  //listen:listen,
   momentUctLong:momentUctLong,
   gtmTime:gtmTime,
 }
@@ -208,18 +193,4 @@ module.exports = {
 
 
 
-
 })
-
-/*
-var $ = require('jquery')
-var listeners = require('./listener')
-var request = require('superagent')
-
-
-$('document').ready(function() {
-  listeners.listen()
-
-
-})
-*/

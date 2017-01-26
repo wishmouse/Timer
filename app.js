@@ -70,7 +70,7 @@ app.post('/database', function(req, res){
         if (err){
           conosole.log("there is an error: ", err)
         } else {
-          res.redirect('main')
+          res.redirect('/')
         }
         db.close()
       })

@@ -11,7 +11,6 @@
 </head>
 <body>
 
-<p>This is result[0].date: == <i>{{date}}</i> ==</p>
   <div class="container">
      <div class='row'>
        <div class="four columns">
@@ -34,6 +33,7 @@
       <div class="four columns">
         <p>UTC time<p>
           <div class="facts" id='todays-time-gtm'></div>
+          <span id="todays-date-gtm-epoch" hidden/>
       </div>
     </div>
   </div>
@@ -43,11 +43,13 @@
        <div class="four columns">
          <p>MCT<p>
           <div class="times" id='mct-time'></div>
+          <span id="mct-epoch" hidden>
         </div>
 
       <div class="four columns">
         <p>ECT<p>
           <div class="times" id='ect-time'></div>
+          <span id="ect-epoch"  hidden>
       </div>
     </div>
   </div>
@@ -76,44 +78,32 @@
         <div id="timer-message" class="twelve columns"></div>
       </div>
     </div>
-    <div class="container" id="time-input">
-      <div class='row'>
-          <div class="four columns">
-            <p>MCT Input</p>
-            <div>
-                <input type="datetime-local" id="mct-input" class="times" style="width:300">
-            </div>
-            <input type="submit" id="time-submit">
-          </div>
-          <div class="four columns">
-            <p>ECT Input</p>
-            <div>
-                <input type="datetime-local" id="ect-input" class="times" style="width:300">
-            </div>
-            <input type="submit" id="time-submit-ect">
-          </div>
-      </div>
-    </div>
+
+    <form id="data-form" >
+          <p>MCT time</p>
+          <input type="datetime-local" id="mct-input" class="times" style="width:300">
+
+          <p>ECT time</p>
+          <input type="datetime-local" id="ect-input" class="times" style="width:300">
+          <input type="submit" value="Submit" id="data-submit">
+    </form>
+
 
     <script>
 var soundThirty = document.createElement('audio')
 soundThirty.id = 'audio'
-//soundThirty.controls = 'controls'
 soundThirty.src = '../audio/RickRoll.mp3'
 
 var soundFifteen = document.createElement('audio')
 soundFifteen.id = 'audio'
-//soundFifteen.controls = 'controls'
 soundFifteen.src = '../audio/Proclaimers.mp3'
 
 var soundFive = document.createElement('audio')
 soundFive.id = 'audio'
-//soundFive.controls = 'controls'
 soundFive.src = '../audio/Narwhals.mp3'
 
 var soundEnd  = document.createElement('audio')
 soundEnd.id = 'audio'
-//soundEnd.controls = 'controls'
 soundEnd.src = '../audio/ImperialMarch.mp3'
 
     </script>
