@@ -10,17 +10,17 @@
   <script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
 </head>
 <body>
-
+<div id="countdown-timer">
   <div class="container">
      <div class='row'>
        <div class="four columns">
          <p>Todays date<p>
-          <div class="facts" id='todays-date'></div>
+          <div class="time-values" id='todays-date'></div>
         </div>
 
       <div class="four columns">
         <p>Current time<p>
-          <div class="facts" id='todays-time'></div>
+          <div class="time-values" id='todays-time'></div>
       </div>
     </div>
   </div>
@@ -28,11 +28,11 @@
     <div class='row'>
       <div class="four columns">
         <p>UTC date<p>
-          <div class="facts" id='todays-date-gtm'></div>
+          <div class="time-values" id='todays-date-gtm'></div>
       </div>
       <div class="four columns">
         <p>UTC time<p>
-          <div class="facts" id='todays-time-gtm'></div>
+          <div class="time-values" id='todays-time-gtm'></div>
           <span id="todays-date-gtm-epoch" hidden/>
       </div>
     </div>
@@ -78,15 +78,22 @@
         <div id="timer-message" class="twelve columns"></div>
       </div>
     </div>
+</div>
 
-    <form id="data-form" >
-          <p>MCT time</p>
-          <input type="datetime-local" id="mct-input" class="times" style="width:300">
+<input type="button" value="Enter times" id="show-data">
+<div id="enter-data"
+  <form id="data-form" >
+        <p>MCT time</p>
+        <input type="datetime-local" id="mct-input" class="times" style="width:300">
 
-          <p>ECT time</p>
-          <input type="datetime-local" id="ect-input" class="times" style="width:300">
-          <input type="submit" value="Submit" id="data-submit">
-    </form>
+        <p>ECT time</p>
+        <input type="datetime-local" id="ect-input" class="times" style="width:300">
+        <input type="submit" value="Submit" id="data-submit">
+
+        <div id="error" class="error">Dates do not match</div>
+  </form>
+  <input type="button" value="Check data" id="check-data">
+</div>
 
 
     <script>

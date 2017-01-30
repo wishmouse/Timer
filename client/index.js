@@ -32,6 +32,9 @@ $('document').ready(function() {
 
 
 function listen(){
+    $('#enter-data').hide()
+    $("#error").hide()
+
 
       $('#data-submit').click(function(e){
       e.preventDefault()
@@ -43,19 +46,36 @@ function listen(){
             ectTimeShort = moment.utc(epoch).format("HH:mm")
             mctTimeShort = moment.utc(mctEpoch).format("HH:mm")
             ectDateShort = moment.utc(epoch).format("D MMM")
-            $('#data-form')[0].reset();
+            mctDateShort = moment.utc(mctEpoch).format("D MMM")
+
+            var diffCheck = moment.utc(moment(mctEpoch).diff(moment(epoch))).format()
 
 
-            $.ajax({
-              method: "POST",
-              url: "/database",
-              data: { date: ectDateShort,
-                      ect: ectTimeShort,
-                      ectEpoch: epoch,
-                      mct: mctTimeShort,
-                      mctEpoch: mctEpoch
-                     }
-            })
+            var maxTime = moment(epoch).add(8, 'hours') //mct plus 8 hours
+            var maxTimeHours = new Date(maxTime).valueOf()
+            var minTime = moment(maxTimeHours).add(30, 'minutes') // mct plus 5 hours
+            var totalMaxTime = new Date(minTime).valueOf()
+            console.log("totalMaxTime", totalMaxTime)
+            console.log("mctEpoch", mctEpoch)
+
+
+            if (ectDateShort == mctDateShort && totalMaxTime < mctEpoch){
+              $.ajax({
+                method: "POST",
+                url: "/database",
+                data: { date: ectDateShort,
+                        ect: ectTimeShort,
+                        ectEpoch: epoch,
+                        mct: mctTimeShort,
+                        mctEpoch: mctEpoch
+                       }
+              })
+              $('#mct-input').val('')
+              $('#ect-input').val('')
+            } else {
+              $("#error").show()
+
+            }
         })
       }
 
@@ -121,6 +141,18 @@ function countdownTimer(){
 
   return setInterval
 }
+
+$("#show-data").click(function(e) {
+  e.preventDefault();
+  $("#enter-data").show()
+  $("#show-data").hide()
+});
+
+$("#check-data").click(function(e) {
+  e.preventDefault();
+  $("#enter-data").hide()
+  $("#show-data").show()
+});
 
 function alertNotifiction(){
   if (intervalHours == 0 && intervalMinutes == 30 && intervalSeconds < 59 && intervalSeconds > 50) {

@@ -11,24 +11,6 @@ h1, h2, h3 {
 }
 
 
-.causes{
-  padding-top: 30px;
-  padding-left: 30px;
-  padding-bottom: 10px;
-  background-color: #F0DDD3;
-  border-radius: 45px;
-  border:3px solid #8C8079;
-  color:#593650;
-  font-size: 20px;
-  border: 5px #F0DDD3 solid;
-}
-
-}
-.signIn{
-  background-image: url('/stylesheets/banner.jpg')
-}
-
-
 #timer-message{
   font-size: 5em;
   color: white;
@@ -39,18 +21,8 @@ h1, h2, h3 {
   margin: 30px;"
 }
 
-#birthdaySumbit{
-  background-color: #A66583;
-}
 
-#birthday{
- border-radius: 10px;
- border-color: #D9C8BF;
- height: 50px;
- width: 250px;
-}
-
-.facts{
+.time-values{
   width: 150px;
   border-radius: 10px;
   background-color: #D9C8BF;
@@ -92,6 +64,7 @@ h1, h2, h3 {
   top: -15px;
   left: -15px;
 }
+
 #timeToGoLabels ul {
   list-style: none outside none;
 }
@@ -113,6 +86,16 @@ h1, h2, h3 {
 p {
   color: #F0DDD3;
   font-size: 20px;
+}
+
+.error {
+  border-radius: 10px;
+  background-color: white;
+  color: red;
+  text-align: center;
+  padding: 13px;
+  font-size: 20px;
+
 }
 
 https://color.adobe.com/Tema-Color-18-color-theme-8034445/

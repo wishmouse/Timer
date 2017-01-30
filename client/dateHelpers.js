@@ -2,7 +2,6 @@ var momentCountdown = require('moment-countdown')
 var moment = require('moment');
 var momentZone = require('moment-timezone')
 var $ = require('jquery')
-//var listen = require('./listener')
 var listen = require('./index')
 var gtmDateVal
 var timeData
@@ -42,13 +41,15 @@ function dateGtm(){
   return setInterval
 }
 
+
 function timeGtm(){
   var localTime = moment()
   localTime.utc().format()
   setInterval(function(){
-    var hours = moment.utc().hours()
-    var minutes = moment.utc().minutes()
-    var seconds = moment.utc().seconds()
+
+    var hours = moment.utc().format('HH')
+    var minutes = moment.utc().format('mm')
+    var seconds = moment.utc().format('ss')
 
     $("#todays-time-gtm").text(hours +':'+ minutes +':'+ seconds)
   }, 1000
@@ -56,6 +57,10 @@ function timeGtm(){
   return setInterval
 }
 
+
+var hours = moment().format("HH")
+var minutes = moment().format("mm")
+var seconds = moment().format("ss")
 
 function currentDate(){
   setInterval(function(){
@@ -71,9 +76,9 @@ function currentDate(){
 
 function currentTime(){
   setInterval(function(){
-    var hours = moment().hours()
-    var minutes = moment().minutes()
-    var seconds = moment().seconds()
+    var hours = moment().format("HH")
+    var minutes = moment().format("mm")
+    var seconds = moment().format("ss")
 
     $("#todays-time").text(hours +':'+ minutes +':'+ seconds)
   }, 1000
