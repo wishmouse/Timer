@@ -19,7 +19,7 @@ moment() .format();
 
 function dateGtm(){
   setInterval(function(){
-    var day = moment.utc().format("DD")
+    var day = moment.utc().format("D")
     var month = moment.utc().format("MMM")
     var second = moment.utc().format("ss")
     var gtmDateVal = day +" "+ month

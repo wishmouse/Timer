@@ -59,6 +59,27 @@ function listen(){
             console.log("mctEpoch", mctEpoch)
 
 
+            if (ectDateShort == mctDateShort){
+              $.ajax({
+                method: "POST",
+                url: "/database",
+                data: { date: ectDateShort,
+                        ect: ectTimeShort,
+                        ectEpoch: epoch,
+                        mct: mctTimeShort,
+                        mctEpoch: mctEpoch
+                       }
+              })
+              $('#mct-input').val('')
+              $('#ect-input').val('')
+            } else {
+              $("#error").show()
+
+            }
+
+
+/*
+
             if (ectDateShort == mctDateShort && totalMaxTime < mctEpoch){
               $.ajax({
                 method: "POST",
@@ -76,6 +97,7 @@ function listen(){
               $("#error").show()
 
             }
+            */
         })
       }
 
@@ -155,33 +177,33 @@ $("#check-data").click(function(e) {
 });
 
 function alertNotifiction(){
-  if (intervalHours == 0 && intervalMinutes == 30 && intervalSeconds < 59 && intervalSeconds > 50) {
+  if (intervalHours == 0 && intervalMinutes == 29 && intervalSeconds < 59 && intervalSeconds > 45) {
      thirtyMinutes()
      $("#time-input").hide()
     document.body.appendChild(soundThirty).play()
-  } else if (intervalHours == 0 && intervalMinutes == 30 && intervalSeconds == 44){
+  } else if (intervalHours == 0 && intervalMinutes == 29 && intervalSeconds == 44){
       $( "audio" ).remove( "#audio" )
       $("#time-input").show()
-  } else if(intervalHours == 0 && intervalMinutes == 15 && intervalSeconds < 59 && intervalSeconds > 45) {
+  } else if(intervalHours == 0 && intervalMinutes == 14 && intervalSeconds < 59 && intervalSeconds > 45) {
      fifteenMinutes()
      $("#time-input").hide()
       document.body.appendChild(soundFifteen).play()
-  } else if (intervalHours == 0 && intervalMinutes == 15 && intervalSeconds == 44) {
+  } else if (intervalHours == 0 && intervalMinutes == 14 && intervalSeconds == 44) {
       $( "audio" ).remove( "#audio" )
       $("#time-input").show()
-  } else if (intervalHours == 0 && intervalMinutes == 5  && intervalSeconds < 59 && intervalSeconds > 45) {
+  } else if (intervalHours == 0 && intervalMinutes == 4  && intervalSeconds < 59 && intervalSeconds > 45) {
       $("#time-input").hide()
      fiveMinutes()
      document.body.appendChild(soundFive).play()
-  } else if (intervalHours == 0 && intervalMinutes == 5 && intervalSeconds == 44 ) {
+  } else if (intervalHours == 0 && intervalMinutes == 4 && intervalSeconds == 44 ) {
       $( "audio" ).remove( "#audio" )
       $("#time-input").show()
-  } else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds < 59 && intervalSeconds > 45) {
+  } else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds < 15 && intervalSeconds > 0) {
       zeroMinutes()
       $("#time-input").hide()
       document.body.appendChild(soundEnd).play()
       timeType()
-  }  else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds == 44) {
+  }  else if (intervalHours == 0 && intervalMinutes == 0 && intervalSeconds == 0) {
       $("audio" ).remove( "#audio" )
       $("#time-input").show()
   }
@@ -189,27 +211,32 @@ function alertNotifiction(){
 
 
 
-$('div.section:empty').hide();
+//$('div.section:empty').hide();
+$("#timer-message").hide()
 
   function thirtyMinutes(){
+    $("#timer-message").show()
     document.getElementById("timer-message").innerHTML = "30 minutes ....";
     $('#timer-message').fadeOut(500).fadeIn(500)
     setTimeout ( 'document.getElementById("timer-message").innerHTML = ""', 500 );
   }
 
   function fifteenMinutes()  {
+    $("#timer-message").show()
     document.getElementById("timer-message").innerHTML = "15 minutes ....";
     $('#timer-message').fadeOut(500).fadeIn(500);
     setTimeout ( 'document.getElementById("timer-message").innerHTML = ""', 500 );
   }
 
   function fiveMinutes()  {
+    $("#timer-message").show()
      document.getElementById("timer-message").innerHTML = "5 minutes ....";
      $('#timer-message').fadeOut(500).fadeIn(500);
      setTimeout ( 'document.getElementById("timer-message").innerHTML = ""', 500 );
   }
 
   function zeroMinutes(){
+    $("#timer-message").show()
     document.getElementById("timer-message").innerHTML = "times up ....";
      $('#timer-message').fadeOut(500).fadeIn(500).addClass("timer-message");
      setTimeout ( 'document.getElementById("timer-message").innerHTML = ""', 500 )

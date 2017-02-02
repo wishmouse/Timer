@@ -1,14 +1,98 @@
 <html>
 <head>
   <title>Methuselah</title>
-  <link rel='stylesheet' type='text/css' href='../stylesheets/normalize.css'></link>
+  <!--<link rel='stylesheet' type='text/css' href='../stylesheets/normalize.css'></link>
   <link rel='stylesheet' type='text/css' href='../stylesheets/skeleton.css'></link>
+-->
   <link rel='stylesheet' type='text/css' href='../stylesheets/style.css'></link>
   <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
   <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
   <script src="/bundle.js"></script>
   <script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
 </head>
+<body>
+<div id="countdown-timer">
+  <div class="wrapper">
+    <div class='inner'>
+     <div class="today">Current date</div>
+     <div class="today-time-values" id='todays-date'></div>
+    </div>
+
+    <div class='inner'>
+      <div class="today">Current time</div>
+      <div class="today-time-values" id='todays-time'></div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+      <div class='inner'>
+        <div class="utc">UTC date</div>
+          <div class="uct-time-values" id='todays-date-gtm'></div>
+        </div>
+      <div class="inner">
+          <div class="utc">UTC time</div>
+          <div class="uct-time-values" id='todays-time-gtm'></div>
+          <span id="todays-date-gtm-epoch" hidden/>
+      </div>
+  </div>
+
+  <div class="wrapper">
+       <div class="inner">
+         <div class="utc">MCT</div>
+          <div class="uct-time-values" id='mct-time'></div>
+          <span id="mct-epoch" hidden>
+        </div>
+
+      <div class="inner">
+          <div class="utc">ECT</div>
+          <div class="uct-time-values" id='ect-time'></div>
+          <span id="ect-epoch"  hidden>
+      </div>
+  </div>
+
+  <div class="wrapper">
+       <div id="timeToGo">
+        <ul>
+          <li id="hours"></li>
+          <li id="minutes"></li>
+          <li id="seconds"></li>
+        </ul>
+      </div>
+      <div id="timeToGoLabels">
+        <ul>
+          <li>Hours</li>
+          <li>Minutes</li>
+          <li>Seconds</li>
+      </div>
+  </div>
+
+  <input type="button" value="Enter times" id="show-data" class="input-button">
+
+  <div id="timer-message"></div>
+
+
+
+<div id="enter-data">
+  <form id="data-form" >
+    <div class="wrapper">
+         <div class="inner">
+           <div class="titles">MCT data input </div>
+           <input type="datetime-local" id="mct-input" class="data">
+       </div>
+
+       <div class="inner">
+          <div class="titles">ECT data input</div>
+          <input type="datetime-local" id="ect-input" class="data">
+      </div>
+
+        <input type="submit" value="Submit" id="data-submit" class="input-button">
+
+        <div id="error" class="error">Dates do not match</div>
+  </form>
+  <input type="button" value="Check data" class="input-button" id="check-data">
+</div>
+
+<!--
 <body>
 <div id="countdown-timer">
   <div class="container">
@@ -95,7 +179,7 @@
   <input type="button" value="Check data" id="check-data">
 </div>
 
-
+-->
     <script>
 var soundThirty = document.createElement('audio')
 soundThirty.id = 'audio'

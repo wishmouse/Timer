@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  background-color: #593650;
+  background-color: #A1ECFF;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -10,26 +10,66 @@ h1, h2, h3 {
   font-family: 'Righteous', cursive;
 }
 
+.wrapper {
+}
 
-#timer-message{
-  font-size: 5em;
-  color: white;
-  border: 5px #F0DDD3 solid;
-  border-radius: 30px;
-  width: 500px;
-  text-align: center;
-  margin: 30px;"
+.inner {
+    display: inline-block;
+    width: 49%;
+    margin: 5px auto;
+    text-align:center;
+    margin-bottom: 30px;
+}
+
+.titles {
+  font-size: 30px;
+  background-color: #E0F9FF;
+  padding-top: 9px;
+  height: 60px;
+  color: #00667F;
+}
+
+.data {
+  font-size: 30px;
+  background-color: #E0F9FF;
+  padding-top: 9px;
+  height: 88px;
+  color: #00667F;
+  width: 429px;
+}
+
+.timer {
+    display: inline-block;
+    width: 100%;
+    margin: 5px auto;
+    text-align:center;
 }
 
 
-.time-values{
-  width: 150px;
-  border-radius: 10px;
-  background-color: #D9C8BF;
-  color: #593650;
+#timer-message{
+  font-size: 5em;
+  color: #00667F;
+  border: 5px #00667F solid;
+  border-radius: 16px;
+  width: 500px;
+  text-align: center;
+  margin: 50px 0px 70px 180px;
+}
+
+
+.today-time-values{
+  background-color: #A1ECFF;
+  text-align: center;
+  font-size: 14px;
+}
+
+.uct-time-values{
+  background-color: #00667F;
   text-align: center;
   padding: 13px;
-  font-size: 20px;
+  font-size: 53px;
+  color: #A1ECFF;
+  margin-top: -1px;
 }
 
 .times{
@@ -46,19 +86,21 @@ h1, h2, h3 {
 
 #timeToGo ul {
   list-style: none outside none;
+  margin-top: 91px;
+  padding-left: 147px;
 }
 
 #timeToGo li {
-  background: #F0DDD3;
+  background: #00667F;
   border-radius: 10px;
-  color: #593650;
+  color: #A1ECFF;
   text-align: center;
   display: inline-block;
   text-decoration: none;
-  font-size: 40px;
+  font-size: 110px;
   font-weight: bold;
-  height: 60px;
-  width: 70px;
+  height: 160px;
+  width: 200px;
   padding-top: 10px;
   position: relative;
   top: -15px;
@@ -70,24 +112,45 @@ h1, h2, h3 {
 }
 
 #timeToGoLabels li {
-  color: #F0DDD3;
+  color: #00667F;
   display: inline-block;
-  font-size:15px;
-  font-weight: lighter;
+  font-size: 27px;
   height: 20px;
   width: 70px;
-  padding-top: 0px;
+  padding-top: 43px;
+  padding-left: 200px;
   position: relative;
   top: -40px;
   left: -20px;
   text-align: center;
 }
 
-p {
-  color: #F0DDD3;
-  font-size: 20px;
+
+.today {
+  font-size: 14px;
+  font weight: bold;
 }
 
+.utc {
+  font-size: 30px;
+  font weight: bold;
+  background-color: #00667F;
+  padding-top: 10px;
+  color: #A1ECFF;
+
+}
+
+.input-button {
+  color: #00667F;
+  border: 1px #00667F solid;
+  width: 122px;
+  height: 50px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 50px 0px 0px 10px;
+  background-color: #A1ECFF;
+
+}
 .error {
   border-radius: 10px;
   background-color: white;
@@ -98,4 +161,5 @@ p {
 
 }
 
-https://color.adobe.com/Tema-Color-18-color-theme-8034445/
+
+https://color.adobe.com/frios-color-theme-9148723/
