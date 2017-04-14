@@ -1,12 +1,11 @@
 var $ = require('jquery')
 var request = require('superagent')
-//var controller = require('./controller')
 var dateHelpers = require('./dateHelpers')
 var moment = require('moment');
 var momentCountdown = require('moment-countdown')
 var momentZone = require('moment-timezone')
 var search = require('../views/main.hbs')
-//var server = require('../app.js')
+
 
 
 var timeZone = ""
