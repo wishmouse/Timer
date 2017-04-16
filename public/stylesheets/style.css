@@ -1,8 +1,9 @@
 body {
   padding: 50px;
-  background-color: #A1ECFF;
+  background-color: #efefc8;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
 
 h1, h2, h3 {
   color: #F0DDD3;
@@ -23,18 +24,18 @@ h1, h2, h3 {
 
 .titles {
   font-size: 30px;
-  background-color: #E0F9FF;
+  background-color: #efefc8;
   padding-top: 9px;
   height: 60px;
-  color: #00667F;
+  color: black;
 }
 
 .data {
   font-size: 30px;
-  background-color: #E0F9FF;
+  background-color: #efefc8;
   padding-top: 9px;
   height: 88px;
-  color: #00667F;
+  color: black;
   width: 429px;
 }
 
@@ -48,8 +49,8 @@ h1, h2, h3 {
 
 #timer-message{
   font-size: 5em;
-  color: #00667F;
-  border: 5px #00667F solid;
+  color: black;
+  border: 5px black solid;
   border-radius: 16px;
   width: 500px;
   text-align: center;
@@ -58,17 +59,17 @@ h1, h2, h3 {
 
 
 .today-time-values{
-  background-color: #A1ECFF;
+  background-color: #efefc8;
   text-align: center;
   font-size: 14px;
 }
 
 .uct-time-values{
-  background-color: #00667F;
+  background-color: black;
   text-align: center;
   padding: 13px;
   font-size: 53px;
-  color: #A1ECFF;
+  color: #efefc8;
   margin-top: -1px;
 }
 
@@ -91,9 +92,9 @@ h1, h2, h3 {
 }
 
 #timeToGo li {
-  background: #00667F;
+  background: black;
   border-radius: 10px;
-  color: #A1ECFF;
+  color: #54a5dd;
   text-align: center;
   display: inline-block;
   text-decoration: none;
@@ -112,7 +113,7 @@ h1, h2, h3 {
 }
 
 #timeToGoLabels li {
-  color: #00667F;
+  color: black;
   display: inline-block;
   font-size: 27px;
   height: 20px;
@@ -134,21 +135,49 @@ h1, h2, h3 {
 .utc {
   font-size: 30px;
   font weight: bold;
-  background-color: #00667F;
+  background-color: black;
   padding-top: 10px;
-  color: #A1ECFF;
+  color: #efefc8;
 
 }
 
-.input-button {
-  color: #00667F;
-  border: 1px #00667F solid;
-  width: 122px;
-  height: 50px;
+.input-button-data {
+  color: white;
+  border: 1px black solid;
+  width: 230px;
+  height: 80px;
+  font-size: 22px;
   border-radius: 10px;
   text-align: center;
   margin: 50px 0px 0px 10px;
-  background-color: #A1ECFF;
+  background-color:  #2C0091;
+
+}
+
+.input-button-check {
+  color: white;
+  border: 1px black solid;
+  width: 230px;
+  height: 80px;
+  font-size: 22px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 50px 0px 0px 10px;
+  background-color: #659100;
+
+}
+
+.input-button-enter {
+  color: white;
+  border: 1px black solid;
+  width: 230px;
+  height: 80px;
+  font-size: 22px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 50px 0px 0px 10px;
+  background-color:#2C0091;
+
 
 }
 .error {
@@ -157,9 +186,15 @@ h1, h2, h3 {
   color: red;
   text-align: center;
   padding: 13px;
-  font-size: 20px;
+  font-size: 30px;
 
 }
 
+.enter-data{
+margin-top: 100px;
+border-top: 11px solid black;
+padding-top: 65px;
+
+}
 
 https://color.adobe.com/frios-color-theme-9148723/

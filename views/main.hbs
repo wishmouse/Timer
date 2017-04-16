@@ -64,30 +64,35 @@
       </div>
   </div>
 
-  <input type="button" value="Enter times" id="show-data" class="input-button">
+  <input type="button" value="Enter times" id="show-data" class="input-button-enter">
 
   <div id="timer-message"></div>
 
 
 
-<div id="enter-data">
-  <form id="data-form" >
-    <div class="wrapper">
+<div id="enter-data" class="enter-data">
+    <form id="data-form" >
+      <div class="wrapper">
+          <div class="inner">
+             <div class="titles">MCT data input </div>
+             <input type="datetime-local" id="mct-input" class="data">
+          </div>
+
          <div class="inner">
-           <div class="titles">MCT data input </div>
-           <input type="datetime-local" id="mct-input" class="data">
-       </div>
-
-       <div class="inner">
-          <div class="titles">ECT data input</div>
-          <input type="datetime-local" id="ect-input" class="data">
+            <div class="titles">ECT data input</div>
+            <input type="datetime-local" id="ect-input" class="data">
+        </div>
       </div>
-
-        <input type="submit" value="Submit" id="data-submit" class="input-button">
-
-        <div id="error" class="error">Dates do not match</div>
-  </form>
-  <input type="button" value="Check data" class="input-button" id="check-data">
+          <div id="error" class="error">Please recheck data entered</div>
+      <div class="wrapper">
+            <div class="inner">
+              <input type="submit" value="Submit" id="data-submit" class="input-button-data">
+            </div>
+            <div class="inner">
+              <input type="button" value="Data entry complete" class="input-button-check" id="check-data">
+            </div>
+          </div>
+    </form>
 </div>
 
 <script>

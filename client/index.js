@@ -6,8 +6,6 @@ var momentCountdown = require('moment-countdown')
 var momentZone = require('moment-timezone')
 var search = require('../views/main.hbs')
 
-
-
 var timeZone = ""
 var todaysDate = dateHelpers.currentDate()
 var todaysTime = dateHelpers.currentTime()
@@ -77,7 +75,7 @@ function listen(){
             }
 
 
-/*
+
 
             if (ectDateShort == mctDateShort && totalMaxTime < mctEpoch){
               $.ajax({
@@ -96,7 +94,7 @@ function listen(){
               $("#error").show()
 
             }
-            */
+
         })
       }
 

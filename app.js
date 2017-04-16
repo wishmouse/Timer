@@ -51,10 +51,10 @@ app.get('/api',  function(req, res){
     }
   })
 })
-//app.post posts information to database
-app.post('/database', function(req, res){
 
-  ectTimeValue =  req.body //returns object
+
+app.post('/database', function(req, res){
+  ectTimeValue =  req.body
   console.log("this is ectTimeValue", ectTimeValue)
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/Timer"
